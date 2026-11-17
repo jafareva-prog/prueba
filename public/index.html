@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mono bailando 🐒</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: system-ui, sans-serif; color: #fff; overflow: hidden;
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06d6a0);
+    background-size: 400% 400%; animation: fondo 6s ease infinite;
+  }
+  .mono { font-size: min(40vw, 260px); animation: baile .6s ease-in-out infinite alternate; transform-origin: bottom center; }
+  h1 { font-size: clamp(1.5rem, 6vw, 3rem); margin: .5em 0 0; text-shadow: 0 3px 8px rgba(0,0,0,.3); animation: salto .3s ease-in-out infinite alternate; }
+  .notas { position: absolute; font-size: 2.5rem; animation: flotar 3s linear infinite; opacity: 0; }
+  @keyframes baile {
+    0%   { transform: rotate(-15deg) translateY(0) scaleX(1); }
+    50%  { transform: rotate(0deg) translateY(-30px) scaleX(-1); }
+    100% { transform: rotate(15deg) translateY(0) scaleX(-1); }
+  }
+  @keyframes salto { to { transform: translateY(-8px); } }
+  @keyframes fondo { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @keyframes flotar {
+    0% { transform: translateY(0) rotate(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-60vh) rotate(360deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="mono">🐒</div>
+  <h1>¡Funciona Firebase! 🎉</h1>
+  <span class="notas" style="left:15%;bottom:10%;animation-delay:0s">🎵</span>
+  <span class="notas" style="left:75%;bottom:15%;animation-delay:1s">🎶</span>
+  <span class="notas" style="left:40%;bottom:5%;animation-delay:2s">🎵</span>
+  <span class="notas" style="left:85%;bottom:5%;animation-delay:1.5s">🍌</span>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBC6QBPPtYj1E0WdrB0txXPP03fmSqt8a8",
+      authDomain: "prueba-ec3bd.firebaseapp.com",
+      projectId: "prueba-ec3bd",
+      storageBucket: "prueba-ec3bd.firebasestorage.app",
+      messagingSenderId: "560741922633",
+      appId: "1:560741922633:web:90e793b42f879633294c98",
+      measurementId: "G-JG16G63ZL2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+  </script>
+</body>
+</html>
